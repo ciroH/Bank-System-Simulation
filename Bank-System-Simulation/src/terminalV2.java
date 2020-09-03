@@ -94,7 +94,7 @@ public class terminalV2 extends JFrame implements ActionListener,ItemListener {
 	}
 	@Override
 	public void itemStateChanged(ItemEvent radioEvent) {
-		if (radioCajaAhorro.isSelected() && radioSaldo.isSelected()) {
+		if (radioCajaAhorro.isSelected() && radioSaldo.isSelected()) {  //Uso Multiples if porque no se puede usar una sentencia switch que cumpla varias condiciones para cada case.
 			limpiaMenu(0);
 			ctaCLabel.setVisible(false);
 			saldoCLabel.setVisible(false);
@@ -367,15 +367,15 @@ public class terminalV2 extends JFrame implements ActionListener,ItemListener {
 							radioSaldo.setSelected(true);
 							JOptionPane.showMessageDialog(null, "Transferencia realizada exitosamente");
 						}
-					/*"Bloque de código viejo" (Profe, ignore este comentario) */				
-	}
+								
+				}
 			}
 		}
 		
 							
 		
 		if (e.getSource() == extraerDepositar) {
-			if (montoField.getText().equals("") || Float.parseFloat(montoField.getText()) <= 0 ) {
+			if (montoField.getText().equals("") || Float.parseFloat(montoField.getText()) <= 0 ) {   							//No se puede usar Switch aquí, ya fue contemplada la posibilidad, y existiría mucha mas redundancia si se tuviese que usar obligatoriamente una sentencia switch (switch aninado para cada case)
 					JOptionPane.showMessageDialog(null, "Ingrese un valor mayor a cero. no deje el campo del Monto Vacio");
 					montoField.setText("");
 					}else if (radioExtraccion.isSelected()== true && radioCajaAhorro.isSelected() == true && (Float.parseFloat(montoField.getText()) > terminalV2.userList.get(pointer).getSaldoCajaAhorro())) {
@@ -396,7 +396,7 @@ public class terminalV2 extends JFrame implements ActionListener,ItemListener {
 							casoSw = 4;
 					}else if (radioCajaAhorro.isSelected() == true && radioDepositoC.isSelected() == true) {
 							casoSw = 5;
-					}else if (radioCtaCte.isSelected() == true && radioDepositoC.isSelected() == true) {
+					}else if (radioCtaCte.isSelected() == true && radioDepositoC.isSelected() == true) { 
 							casoSw = 6;
 					}					
 			switch (casoSw) {
@@ -549,7 +549,7 @@ public class terminalV2 extends JFrame implements ActionListener,ItemListener {
 		chequeField = new JTextField();
 		
 		setLayout(null);
-		//setBounds(0, 0, 750, 300);
+		//setBounds(0, 0, 750, 300); Reemplazado 
 		setSize(750,300);
 		setLocationRelativeTo(null);
 		setTitle("Bienvenido");		
